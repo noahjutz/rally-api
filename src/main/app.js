@@ -7,7 +7,7 @@ import routes from "./routes.js";
 const swaggerOptions = {
   info: {
     title: "rally-api",
-    version: "1.0.0-dev01",
+    version: process.env.npm_package_version,
   },
 };
 
