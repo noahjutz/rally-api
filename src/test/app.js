@@ -5,6 +5,7 @@ import { MongoClient } from "mongodb";
 
 const client = axios.create({ baseURL: "http://localhost:8080" });
 const mongoClient = new MongoClient(process.env.MONGO_URL);
+const testCollection = mongoClient.db("test").collection("test");
 
 suite("app", () => {
   suiteSetup(async () => {
@@ -15,8 +16,14 @@ suite("app", () => {
     await mongoClient.close();
   });
 
-  test("GET / returns Hello, World!", async () => {
+  teardown(async () => {
+    await mongoClient.db("test").dropDatabase();
+  });
+
+  test("GET / returns testCollection", async () => {
+    const hello = { text: "Hello, world!" };
+    await testCollection.insertOne(hello);
     const res = await client.get("/");
-    assert.equal(res.data, "Hello, World!");
+    assert.deepEqual(res.data, hello);
   });
 });
