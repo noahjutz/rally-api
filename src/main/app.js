@@ -3,6 +3,7 @@ import Hapi from "@hapi/hapi";
 import Swagger from "hapi-swagger";
 import Inert from "@hapi/inert";
 import Vision from "@hapi/vision";
+import Mongoose from "mongoose";
 import routes from "./routes.js";
 
 const swaggerOptions = {
@@ -18,6 +19,7 @@ const server = Hapi.server({
 });
 
 const init = async () => {
+  await Mongoose.connect(process.env.MONGO_URL);
   server.route(routes);
 
   await server.register([Inert, Vision]);
