@@ -1,3 +1,4 @@
+import "dotenv/config";
 import Hapi from "@hapi/hapi";
 import Swagger from "hapi-swagger";
 import Inert from "@hapi/inert";
@@ -11,7 +12,10 @@ const swaggerOptions = {
   },
 };
 
-const server = Hapi.server({ host: "localhost", port: 8080 });
+const server = Hapi.server({
+  host: process.env.HOST,
+  port: process.env.PORT,
+});
 
 const init = async () => {
   server.route(routes);
