@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/noahjutz/rally-api/issues"
   },
-  "homepage": "https://github.com/noahjutz/rally-api#readme"
+  "homepage": "https://github.com/noahjutz/rally-api#readme",
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0"
+  },
+  "type": "module"
 }
