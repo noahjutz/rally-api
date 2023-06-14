@@ -1,0 +1,19 @@
+{
+  "name": "rally-api",
+  "version": "1.0.0-dev01",
+  "description": "",
+  "main": "src/main/app.js",
+  "scripts": {
+    "test": "mocha --ui tdd src/test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noahjutz/rally-api.git"
+  },
+  "author": "Noah Jutz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/noahjutz/rally-api/issues"
+  },
+  "homepage": "https://github.com/noahjutz/rally-api#readme"
+}
