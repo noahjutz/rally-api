@@ -12,6 +12,7 @@
     "import/extensions": "off",
     "no-console": "off",
     "import/no-extraneous-dependencies": "off",
-    "no-undef": "off"
+    "no-undef": "off",
+    "no-underscore-dangle": "off"
   }
 }
