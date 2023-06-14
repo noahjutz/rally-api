@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/noahjutz/rally-api#readme",
   "devDependencies": {
+    "axios": "^1.4.0",
     "chai": "^4.3.7",
     "mocha": "^10.2.0"
   },
