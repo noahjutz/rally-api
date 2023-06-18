@@ -8,6 +8,7 @@ export default [
     config: {
       tags: ["api"],
       description: "Hello, world!",
+      auth: false,
     },
   },
 ];
