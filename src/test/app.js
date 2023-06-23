@@ -11,10 +11,18 @@ suite("app", () => {
     await mongo.close();
   });
 
-  test("GET / returns hello collection", async () => {
-    const actual = (await ax.get("/")).data;
-    const expected = mapIds(await hellos.find().toArray());
+  suite("/", () => {
+    test("GET returns hello collection", async () => {
+      const actual = (await ax.get("/")).data;
+      const expected = mapIds(await hellos.find().toArray());
 
-    assert.deepEqual(actual, expected);
+      assert.deepEqual(actual, expected);
+    });
+  });
+
+  suite("/insertUser", () => {
+    test("POST doesn't throw error", async () => {
+      await ax.post("/insertUser");
+    });
   });
 });
