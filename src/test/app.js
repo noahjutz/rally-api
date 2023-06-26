@@ -1,5 +1,5 @@
 import { assert } from "chai";
-import { ax, mongo, hellos } from "./fixtures.js";
+import { ax, mongo, hellos, users } from "./fixtures.js";
 import mapIds from "./util.js";
 
 suite("app", () => {
@@ -21,8 +21,10 @@ suite("app", () => {
   });
 
   suite("/insertUser", () => {
-    test("POST doesn't throw error", async () => {
-      await ax.post("/insertUser");
+    test("POST inserts user to database", async () => {
+      await ax.post("/insertUser", { username: "John Doe", password: "123" });
+      const actual = await users.find({ username: "John Doe" }).toArray();
+      assert.isNotEmpty(actual);
     });
   });
 });
