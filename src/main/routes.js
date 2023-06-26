@@ -1,4 +1,5 @@
 import Hello from "./model/domain/hello.js";
+import User from "./model/domain/user.js";
 
 export default [
   {
@@ -14,7 +15,10 @@ export default [
   {
     method: "POST",
     path: "/insertUser",
-    handler: () => "Not Yet Implemented",
+    handler: async (request) => {
+      await new User(request.payload).save();
+      return User.findOne(request.payload);
+    },
     config: {
       tags: ["api"],
       auth: false,

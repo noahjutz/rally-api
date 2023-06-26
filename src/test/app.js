@@ -11,6 +11,11 @@ suite("app", () => {
     await mongo.close();
   });
 
+  setup(async () => {
+    await mongo.db("test").dropDatabase();
+    await mongo.db("rally").dropDatabase();
+  });
+
   suite("/", () => {
     test("GET returns hello collection", async () => {
       const actual = (await ax.get("/")).data;
