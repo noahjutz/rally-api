@@ -11,4 +11,13 @@ export default [
       auth: false,
     },
   },
+  {
+    method: "POST",
+    path: "/insertUser",
+    handler: () => "Not Yet Implemented",
+    config: {
+      tags: ["api"],
+      auth: false,
+    },
+  },
 ];
