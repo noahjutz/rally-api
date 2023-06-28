@@ -32,4 +32,16 @@ suite("app", () => {
       assert.isNotEmpty(actual); // todo make sure result is correct
     });
   });
+
+  suite("/login", () => {
+    test("returns error if wrong credentials", () => {
+      throw new Error("not yet implemented");
+    });
+    test("returns OK if correct credentials", () => {
+      throw new Error("not yet implemented");
+    });
+    test("returns valid jwt", () => {
+      throw new Error("not yet implemented");
+    });
+  });
 });
