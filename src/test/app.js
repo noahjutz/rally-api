@@ -29,7 +29,7 @@ suite("app", () => {
     test("POST inserts user to database", async () => {
       await ax.post("/insertUser", { username: "John Doe", password: "123" });
       const actual = await users.find({ username: "John Doe" }).toArray();
-      assert.isNotEmpty(actual);
+      assert.isNotEmpty(actual); // todo make sure result is correct
     });
   });
 });
