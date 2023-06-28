@@ -15,9 +15,9 @@ export default [
   {
     method: "POST",
     path: "/insertUser",
-    handler: async (request) => {
+    handler: async (request, h) => {
       await new User(request.payload).save();
-      return User.findOne(request.payload);
+      return h.response(await User.findOne(request.payload));
     },
     config: {
       tags: ["api"],
