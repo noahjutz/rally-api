@@ -35,10 +35,11 @@ suite("app", () => {
 
   suite("/login", () => {
     test("returns error if wrong credentials", async () => {
-      await ax.post("/login", {
-        username: "nonexistentUser",
-        password: "wrong",
-      });
+      const request = ax.post("/login", {
+          username: "nonexistentUser",
+          password: "wrong",
+        });
+      await assert.isRejected(request);
     });
     // test("returns OK if correct credentials", () => {
     //   throw new Error("not yet implemented");
