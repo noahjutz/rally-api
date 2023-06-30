@@ -24,4 +24,13 @@ export default [
       auth: false,
     },
   },
+  {
+    method: "POST",
+    path: "/login",
+    handler: () => "Todo",
+    config: {
+      tags: ["api"],
+      auth: false,
+    },
+  },
 ];
