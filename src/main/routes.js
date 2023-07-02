@@ -34,7 +34,7 @@ export default [
       if (await User.findOne({ username, password })) {
         const key = process.env.JWT_KEY;
         const jwt = Jwt.sign({ username, password }, key);
-        return h.response().state("token", jwt);
+        return h.response({ token: jwt }).state("token", jwt);
       }
       return Boom.unauthorized("Invalid credentials");
     },
