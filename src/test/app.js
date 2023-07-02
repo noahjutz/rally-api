@@ -1,6 +1,7 @@
 import { assert } from "chai";
+import Jwt from "jsonwebtoken";
 import { ax, mongo, hellos, users } from "./fixtures.js";
-import mapIds from "./util.js";
+import { mapIds, parseCookie } from "./util.js";
 
 suite("app", () => {
   suiteSetup(async () => {
@@ -42,16 +43,18 @@ suite("app", () => {
       assert.equal(response.status, 401);
     });
     test("returns valid JWT", async () => {
+      const key = process.env.JWT_KEY;
+
       const user = {
         username: "newUser123",
         password: "password123",
       };
       await users.insertOne(user);
       const response = await ax.post("/login", user);
-      const cookies = response.headers["set-cookie"];
+      const cookie = parseCookie(response.headers["set-cookie"][0]);
 
-      const pattern = /[\w-]*\.[\w-]*\.[\w-]*/;
-      assert.match(cookies[0], pattern);
+      assert.equal(cookie[0], "token");
+      assert.doesNotThrow(() => Jwt.verify(cookie[1], key));
     });
   });
 });
