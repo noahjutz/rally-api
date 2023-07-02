@@ -5,6 +5,7 @@
   "main": "src/main/app.js",
   "scripts": {
     "start": "node src/main/app.js",
+    "prod": "node src/main/app.js > ~/rally.log",
     "test": "mocha --ui tdd src/test",
     "watch": "nodemon --exec npm start"
   },
