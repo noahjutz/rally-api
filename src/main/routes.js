@@ -29,12 +29,11 @@ export default [
   {
     method: "POST",
     path: "/login",
-    handler: async (request, h) => {
-      const { username, password } = request.payload;
-      if (await User.findOne({ username, password })) {
-        const key = process.env.JWT_KEY;
-        const jwt = Jwt.sign({ username, password }, key);
-        return h.response({ token: jwt }).state("token", jwt);
+    handler: async (request) => {
+      const user = request.payload;
+      if (await User.findOne(user)) {
+        const token = Jwt.sign(user, process.env.JWT_KEY);
+        return { token };
       }
       return Boom.unauthorized("Invalid credentials");
     },
