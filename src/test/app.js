@@ -41,11 +41,17 @@ suite("app", () => {
       });
       assert.equal(response.status, 401);
     });
-    // test("returns OK if correct credentials", () => {
-    //   throw new Error("not yet implemented");
-    // });
-    // test("returns valid jwt", () => {
-    //   throw new Error("not yet implemented");
-    // });
+    test("returns valid JWT", async () => {
+      const user = {
+        username: "newUser123",
+        password: "password123",
+      };
+      await users.insertOne(user);
+      const response = await ax.post("/login", user);
+      const cookies = response.headers["set-cookie"];
+
+      const pattern = /[\w-]*\.[\w-]*\.[\w-]*/;
+      assert.match(cookies[0], pattern);
+    });
   });
 });
