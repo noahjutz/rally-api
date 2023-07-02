@@ -1,6 +1,6 @@
 {
   "name": "rally-api",
-  "version": "1.0.0-dev05",
+  "version": "1.0.0-alpha01",
   "description": "",
   "main": "src/main/app.js",
   "scripts": {
