@@ -1,3 +1,4 @@
+import Boom from "@hapi/boom";
 import Hello from "./model/domain/hello.js";
 import User from "./model/domain/user.js";
 
@@ -27,11 +28,12 @@ export default [
   {
     method: "POST",
     path: "/login",
-    handler: (request) => {
+    handler: async (request) => {
       const { username, password } = request.payload;
-      console.log(`username: ${username}, password: ${password}`);
-      // TODO: Validate credentials and return JWT
-      return "Todo";
+      if (await User.findOne({ username, password })) {
+        return Boom.notImplemented();
+      }
+      return Boom.unauthorized("Invalid credentials");
     },
     config: {
       tags: ["api"],
