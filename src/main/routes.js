@@ -1,4 +1,5 @@
 import Boom from "@hapi/boom";
+import Jwt from "jsonwebtoken";
 import Hello from "./model/domain/hello.js";
 import User from "./model/domain/user.js";
 
@@ -31,7 +32,9 @@ export default [
     handler: async (request, h) => {
       const { username, password } = request.payload;
       if (await User.findOne({ username, password })) {
-        return h.response().state("token", "todo.todo.todo");
+        const key = process.env.JWT_KEY;
+        const jwt = Jwt.sign({ username, password }, key);
+        return h.response().state("token", jwt);
       }
       return Boom.unauthorized("Invalid credentials");
     },
