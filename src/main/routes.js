@@ -27,7 +27,12 @@ export default [
   {
     method: "POST",
     path: "/login",
-    handler: () => "Todo",
+    handler: (request) => {
+      const { username, password } = request.payload;
+      console.log(`username: ${username}, password: ${password}`);
+      // TODO: Validate credentials and return JWT
+      return "Todo";
+    },
     config: {
       tags: ["api"],
       auth: false,
