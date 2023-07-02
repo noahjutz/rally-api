@@ -29,7 +29,7 @@ const server = Hapi.server({
 });
 
 const init = async () => {
-  await Mongoose.connect(`${process.env.MONGO_URL}/rally`);
+  await Mongoose.connect(process.env.MONGO_URL);
   server.route(routes);
 
   await server.register(AuthJwt);
