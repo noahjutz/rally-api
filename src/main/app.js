@@ -23,6 +23,9 @@ const server = Hapi.server({
   routes: {
     cors: true,
   },
+  debug: {
+    request: process.env.DEBUG ? ["error"] : [],
+  },
 });
 
 const init = async () => {
