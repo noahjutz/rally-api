@@ -28,10 +28,10 @@ export default [
   {
     method: "POST",
     path: "/login",
-    handler: async (request) => {
+    handler: async (request, h) => {
       const { username, password } = request.payload;
       if (await User.findOne({ username, password })) {
-        return Boom.notImplemented();
+        return h.response().state("token", "todo.todo.todo");
       }
       return Boom.unauthorized("Invalid credentials");
     },
