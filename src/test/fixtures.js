@@ -6,7 +6,10 @@ import chaiAsPromised from "chai-as-promised";
 
 chai.use(chaiAsPromised);
 
-export const ax = axios.create({ baseURL: "http://localhost:8080" });
+export const ax = axios.create({
+  baseURL: "http://localhost:8080",
+  validateStatus: () => true,
+});
 export const mongo = new MongoClient(process.env.MONGO_URL);
 
 export const hellos = mongo.db("test").collection("hellos");
