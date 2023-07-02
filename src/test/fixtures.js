@@ -1,10 +1,6 @@
 import "dotenv/config";
 import axios from "axios";
 import { MongoClient } from "mongodb";
-import chai from "chai";
-import chaiAsPromised from "chai-as-promised";
-
-chai.use(chaiAsPromised);
 
 export const ax = axios.create({
   baseURL: "http://localhost:8080",
